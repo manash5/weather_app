@@ -18,6 +18,10 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   late Future<Map<String, dynamic>> weather;
 
+  double kelvinToCelsius(double kelvin) {
+    return kelvin - 273.15;
+  }
+
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
       String cityName = 'Kathmandu';
@@ -129,7 +133,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: Column(
                             children: [
                               Text(
-                                "$currentTemp K",
+                                "${kelvinToCelsius(currentTemp).toStringAsFixed(1)}°C",
                                 style: const TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -191,7 +195,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 size: 30,
                               ),
                               temperature:
-                                  "${hourlyForecast['main']['temp']} K",
+                                  "${kelvinToCelsius(hourlyForecast['main']['temp']).toStringAsFixed(0)}°C",
                             );
                           },
                         ),
