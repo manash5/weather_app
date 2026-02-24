@@ -143,7 +143,7 @@ class WeatherDesign {
                     color: Color(0x88FFEE58),
                     blurRadius: 40,
                     spreadRadius: 12,
-                  ),
+                  ), // box shadow 
                 ],
               ),
             ),
